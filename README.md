@@ -133,7 +133,7 @@ Estou aberta a oportunidades, colaborações e projetos:
 
 * 💼 LinkedIn: *www.linkedin.com/in/liliene-picanço*
 * 📧 Email: *lilienep02@gmail.com*
-* 🌐 Portfólio: *https://portfolio-lpp.vercel.app/*
+* 🌐 Portfólio: *https://lilieneeng.vercel.app/*
 
 ---
 
