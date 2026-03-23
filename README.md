@@ -131,9 +131,9 @@ Este projeto reflete minha forma de pensar:
 
 Estou aberta a oportunidades, colaborações e projetos:
 
-* 💼 LinkedIn: *(adicione aqui)*
-* 📧 Email: *(adicione aqui)*
-* 🌐 Portfólio: *(link deploy)*
+* 💼 LinkedIn: *www.linkedin.com/in/liliene-picanço*
+* 📧 Email: *lilienep02@gmail.com*
+* 🌐 Portfólio: *https://portfolio-lpp.vercel.app/*
 
 ---
 
