@@ -154,27 +154,116 @@ section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
 }
 
 /* ───── SOBRE ───── */
-.sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-.sobre-text p { font-size: 15px; color: rgba(245,242,238,0.72); line-height: 1.85; margin-bottom: 18px; }
-.sobre-text p strong { color: var(--accent); font-weight: 500; }
-.sobre-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.sobre-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;  /* imagem tamanho automático, texto expande */
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 56px;
+}
+
+/* Coluna da imagem */
+.sobre-col-img {
+  display: flex;
+  justify-content: center;
+}
+
+/* Wrapper da imagem (controla o tamanho) */
+.image-wrapper {
+  width: 200px;           /* ← AQUI você controla o tamanho da foto */
+  max-width: 100%;
+}
+
+/* Estilo da foto */
+.sobre-foto {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;    /* cantos suaves e modernos */
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.sobre-foto:hover {
+  transform: scale(1.02); /* leve zoom ao passar o mouse */
+}
+
+/* Coluna do texto */
+.sobre-col-text p {
+  font-size: 15px;
+  color: rgba(245, 242, 238, 0.72);
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.sobre-col-text p strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Pilulas */
+.sobre-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
 .pill {
-  background: var(--bg3); border: 1px solid var(--border);
-  color: rgba(245,242,238,0.7); font-size: 12px;
-  padding: 7px 16px; border-radius: 20px; letter-spacing: 0.04em;
-  transition: all .25s;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: rgba(245, 242, 238, 0.7);
+  font-size: 12px;
+  padding: 7px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  transition: all 0.25s;
 }
-.pill:hover { border-color: var(--accent); color: var(--accent); }
-.sobre-edu { display: flex; flex-direction: column; gap: 20px; }
+
+.pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Formação acadêmica */
+.sobre-edu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
 .edu-card {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 12px; padding: 22px 24px;
-  transition: border-color .25s;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  transition: border-color 0.25s;
 }
-.edu-card:hover { border-color: rgb(206, 184, 142); }
-.edu-year { font-size: 11px; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
-.edu-course { font-size: 14px; color: var(--white); font-weight: 500; margin-bottom: 4px; }
-.edu-inst { font-size: 13px; color: var(--muted); }
+
+.edu-card:hover {
+  border-color: rgb(206, 184, 142);
+}
+
+.edu-year {
+  font-size: 11px;
+  color: var(--accent2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.edu-course {
+  font-size: 14px;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.edu-inst {
+  font-size: 13px;
+  color: var(--muted);
+}
 
 /* ───── TABS ───── */
 .tabs-wrapper { margin-top: 8px; }
