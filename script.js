@@ -1,3 +1,26 @@
+// Menu hambúrguer
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    // Impede scroll do body quando menu está aberto
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+  });
+  
+  // Fecha o menu ao clicar em um link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+//aqui é o código para a animação de fade-up usando Intersection Observer API
 const elements = document.querySelectorAll('.fade-up');
 
 const observer = new IntersectionObserver((entries) => {
@@ -25,7 +48,7 @@ function showProj(id) {
 }
 
 const text = "Conectando tecnologia, pessoas e ecossistemas para gerar valor real.\nCom visão sistêmica, cocriação e liderança.";
-const speed = 35;
+const speed = 30;
 
 let i = 0;
 const element = document.getElementById("typing-text");
@@ -42,40 +65,47 @@ window.onload = () => {
   setTimeout(typeWriter, 400);
 };
 
-document.querySelectorAll('.proj-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+// Botão Ver Todos os Projetos
+const btnVerTodos = document.getElementById('btnVerTodos');
+const previewGrid = document.getElementById('projetosPreview');
+const fullGrid = document.getElementById('projetosFull');
+let expanded = false;
 
-    const moveX = (x / rect.width - 0.5) * 10;
-    const moveY = (y / rect.height - 0.5) * 10;
-
-    card.style.transform = `rotateX(${-moveY}deg) rotateY(${moveX}deg) scale(1.02)`;
+if (btnVerTodos) {
+  btnVerTodos.addEventListener('click', () => {
+    if (!expanded) {
+      previewGrid.style.display = 'none';
+      fullGrid.style.display = 'grid';
+      btnVerTodos.innerHTML = '← Mostrar menos projetos';
+      expanded = true;
+      
+      document.getElementById('projetos').scrollIntoView({ behavior: 'smooth' });
+    } else {
+      previewGrid.style.display = 'grid';
+      fullGrid.style.display = 'none';
+      btnVerTodos.innerHTML = '✨ Ver todos os projetos →';
+      expanded = false;
+    }
   });
+}
 
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-  });
-});
+// Animação das barras de skills quando entra em visualização
+const skillCategories = document.querySelectorAll('.comp-categoria');
 
-const modal = document.getElementById("modal");
-const title = document.getElementById("modal-title");
-const desc = document.getElementById("modal-desc");
-
-document.querySelectorAll(".proj-card").forEach(card => {
-  card.addEventListener("click", () => {
-    title.innerText = card.querySelector(".proj-name").innerText;
-    desc.innerText = card.querySelector(".proj-desc").innerText;
-
-    modal.style.display = "flex";
-  });
-});
-
-document.querySelector(".close").onclick = () => {
-  modal.style.display = "none";
+const observerOptions = {
+  threshold: 0.3,
+  rootMargin: '0px 0px -50px 0px'
 };
 
-window.onclick = (e) => {
-  if (e.target === modal) modal.style.display = "none";
-};
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+skillCategories.forEach(category => {
+  skillObserver.observe(category);
+});
